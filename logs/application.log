@@ -1,0 +1,50 @@
+2019-01-25 10:45:37,411 [WARN] from application in play-dev-mode-akka.actor.default-dispatcher-8 - Configuration not found for database: No configuration setting found for key 'db'
+2019-01-25 10:45:39,355 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-8 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.headers.SecurityHeadersFilter
+
+2019-01-25 10:45:39,430 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-8 - Application started (Dev)
+2019-01-25 10:45:39,669 [ERROR] from application in application-akka.actor.default-dispatcher-6 - 
+
+! @7akc5n6p9 - Internal server error, for (GET) [/tracks] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[CompletionException: org.skife.jdbi.v2.exceptions.UnableToObtainConnectionException: java.sql.SQLException: No suitable driver found for jdbc:postgresql://localhost:5433/postgres]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:251)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:178)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:382)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:380)
+	at scala.concurrent.Future.$anonfun$recoverWith$1(Future.scala:417)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:41)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:91)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:85)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:91)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:44)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.util.concurrent.CompletionException: org.skife.jdbi.v2.exceptions.UnableToObtainConnectionException: java.sql.SQLException: No suitable driver found for jdbc:postgresql://localhost:5433/postgres
+	at java.util.concurrent.CompletableFuture.encodeThrowable(Unknown Source)
+	at java.util.concurrent.CompletableFuture.completeThrowable(Unknown Source)
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.util.concurrent.CompletableFuture$AsyncSupply.exec(Unknown Source)
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(Unknown Source)
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+Caused by: org.skife.jdbi.v2.exceptions.UnableToObtainConnectionException: java.sql.SQLException: No suitable driver found for jdbc:postgresql://localhost:5433/postgres
+	at org.skife.jdbi.v2.DBI.open(DBI.java:229)
+	at org.skife.jdbi.v2.sqlobject.SqlObjectBuilder.open(SqlObjectBuilder.java:50)
+	at org.skife.jdbi.v2.DBI.open(DBI.java:401)
+	at service.TrackService.lambda$getTracks$0(TrackService.java:34)
+	... 6 common frames omitted
+Caused by: java.sql.SQLException: No suitable driver found for jdbc:postgresql://localhost:5433/postgres
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at org.skife.jdbi.v2.DBI$3.openConnection(DBI.java:139)
+	at org.skife.jdbi.v2.DBI.open(DBI.java:211)
+	... 9 common frames omitted
